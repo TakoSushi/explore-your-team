@@ -51,9 +51,11 @@ export function Login() {
 
   useEffect(() => {
     if (isSuccess) {
-      navigate('/');
       const token = data?.token;
-      setLocalStorageToken(token);
+      if (token) {
+        setLocalStorageToken(token);
+        navigate('/');
+      }
     }
   }, [isSuccess, navigate, data?.token]);
 

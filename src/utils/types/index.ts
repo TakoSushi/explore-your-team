@@ -1,4 +1,4 @@
-export type TUserState = {
+export type TMemberState = {
   id: number;
   email: string;
   first_name: string;
@@ -11,19 +11,19 @@ type TSupportFields = {
   text: string;
 };
 
-export type TUserStateResponse = {
-  data: TUserState;
+export type TMemberStateResponse = {
+  data: TMemberState;
   support: TSupportFields;
 };
 
-export type TUsersList = TUserState[];
+export type TTeamList = TMemberState[];
 
-export type TUsersListResponse = {
+export type TTeamListResponse = {
   page: number;
   per_page: number;
   total: number;
   total_pages: number;
-  data: TUserState[];
+  data: TMemberState[];
   support: TSupportFields;
 };
 

@@ -1,13 +1,13 @@
 // import { useLoaderData } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { useGetUserByIdQuery } from '../../utils/api/UserApi';
+import { useGetMemberByIdQuery } from '../../utils/api/MemberApi';
 
 import styles from './styles/index.module.css';
 
 export function MemberInfoPage() {
   const { id } = useParams();
   const userId = Number(id) ?? 0;
-  const { data } = useGetUserByIdQuery(userId);
+  const { data } = useGetMemberByIdQuery(userId);
 
   return (
     <section className={styles.sectionMemberinfo}>

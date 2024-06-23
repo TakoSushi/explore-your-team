@@ -1,18 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { usersListApi } from '../../utils/api/UsersListApi';
-import { userApi } from '../../utils/api/UserApi';
+import { teamListApi } from '../../utils/api/TeamListApi';
+import { memberApi } from '../../utils/api/MemberApi';
 import { authApi } from '../../utils/api/AuthApi';
+import teamListReducer from './teamListSlice';
 
 export const store = configureStore({
   reducer: {
-    [usersListApi.reducerPath]: usersListApi.reducer,
-    [userApi.reducerPath]: userApi.reducer,
+    [teamListApi.reducerPath]: teamListApi.reducer,
+    [memberApi.reducerPath]: memberApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
+    teamList: teamListReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
-      usersListApi.middleware,
-      userApi.middleware,
+      teamListApi.middleware,
+      memberApi.middleware,
       authApi.middleware,
     ]),
 });

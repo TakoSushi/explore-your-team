@@ -1,5 +1,5 @@
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
-import { userApi } from '../../utils/api/UserApi';
+import { memberApi } from '../../utils/api/MemberApi';
 import styles from './styles/index.module.css';
 import { routePaths } from '../../utils/constants/routePaths';
 
@@ -8,7 +8,7 @@ export function HeaderCom() {
   const location = useLocation();
   const { id } = useParams();
   const userId = Number(id) ?? 0;
-  const { data } = userApi.endpoints.getUserById.useQueryState(userId);
+  const { data } = memberApi.endpoints.getMemberById.useQueryState(userId);
 
   const hadleClick = () => {
     localStorage.removeItem('token');

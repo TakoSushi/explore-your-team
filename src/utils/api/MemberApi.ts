@@ -1,21 +1,21 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { serverBaseUrl } from '../constants/constants';
 
-import { TUserStateResponse, TUserState } from '../types';
+import { TMemberStateResponse, TMemberState } from '../types';
 
-export const userApi = createApi({
-  reducerPath: 'UserApi',
+export const memberApi = createApi({
+  reducerPath: 'MemberApi',
   baseQuery: fetchBaseQuery({ baseUrl: serverBaseUrl }),
   endpoints: (builder) => ({
-    getUserById: builder.query<TUserState, number>({
+    getMemberById: builder.query<TMemberState, number>({
       query(id) {
         return {
           url: `api/users/${id}`,
         };
       },
-      transformResponse: (response: TUserStateResponse) => response.data,
+      transformResponse: (response: TMemberStateResponse) => response.data,
     }),
   }),
 });
 
-export const { useGetUserByIdQuery } = userApi;
+export const { useGetMemberByIdQuery } = memberApi;

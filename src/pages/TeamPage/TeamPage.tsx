@@ -1,14 +1,33 @@
+import { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import { MemberCard } from '../../components/MemberCard/MemberCard';
-import { useGetUsersListByPageQuery } from '../../utils/api/UsersListApi';
+import { useGetTeamListByPageQuery } from '../../utils/api/TeamListApi';
+import { Loader } from '../../components/Loader/Loader';
 
 import styles from './styles/index.module.css';
 
 export function TeamPage() {
-  const { data } = useGetUsersListByPageQuery(1);
+  const [queryPageNubmer, setQueryPageNubmer] = useState(1);
+  const { data, originalArgs, isLoading } =
+    useGetTeamListByPageQuery(queryPageNubmer);
+
+  useEffect(() => {
+    if (Number(originalArgs) > queryPageNubmer) {
+      setQueryPageNubmer(Number(originalArgs));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section className={styles.sectionTeamPage}>
+        <Loader />
+      </section>
+    );
+  }
 
   const handleClick = () => {
-    console.log('показать еще');
+    setQueryPageNubmer((prev) => prev + 1);
   };
 
   return (
@@ -25,9 +44,11 @@ export function TeamPage() {
           </li>
         ))}
       </ul>
-      <button type="button" className={styles.yetBtn} onClick={handleClick}>
-        Показать еще
-      </button>
+      {data && data.length > 0 && (
+        <button type="button" className={styles.yetBtn} onClick={handleClick}>
+          Показать еще
+        </button>
+      )}
     </section>
   );
 }

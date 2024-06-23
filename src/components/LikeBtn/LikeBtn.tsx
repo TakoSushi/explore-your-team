@@ -1,12 +1,32 @@
+import { useState } from 'react';
+import {
+  getLocalStorageData,
+  setLocalLocalStorageData,
+} from '../../utils/hooks/useLikeLocalStorage';
+import { isKeyOfObject } from '../../utils/hooks/isKeyOfObject';
+
 import styles from './styles/index.module.css';
 
 type TLikeBtnProps = {
-  isLiked: boolean;
+  id: number;
 };
 
-export function LikeBtn(isLiked: TLikeBtnProps) {
+function getisLiked(id: number): boolean {
+  const likes = getLocalStorageData('likes');
+  return isKeyOfObject(id, likes) ? likes[id] : false;
+}
+
+export function LikeBtn({ id }: TLikeBtnProps) {
+  const [isLiked, setIsLiked] = useState(getisLiked(id));
+
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
+    setIsLiked(!isLiked);
+
+    setLocalLocalStorageData('likes', {
+      ...getLocalStorageData('likes'),
+      [id]: !isLiked,
+    });
   };
 
   return (
@@ -16,7 +36,7 @@ export function LikeBtn(isLiked: TLikeBtnProps) {
       aria-label="Like button"
       onClick={(e) => handleClick(e)}
     >
-      {isLiked ? (
+      {!isLiked ? (
         <svg
           width="14.000000"
           height="12.000000"

@@ -28,6 +28,8 @@
   font-size: 0;
   width: 124px;
   height: 124px;
+  object-fit: cover;
+  object-position: center;
   border-radius: 50%;
   background-color: var(--secondary-gray-light);
 }

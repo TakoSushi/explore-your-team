@@ -37,7 +37,8 @@ function setLocalStorageToken(token: string) {
 }
 
 export function Login() {
-  const [login, { isSuccess, isError, error, data }] = useLoginMutation();
+  const [login, { isLoading, isSuccess, isError, error, data }] =
+    useLoginMutation();
   const navigate = useNavigate();
 
   const {
@@ -57,13 +58,14 @@ export function Login() {
         navigate('/');
       }
     }
-  }, [isSuccess, navigate, data?.token]);
-
-  const onSubmit: SubmitHandler<TFormInputs> = (formData) => {
-    login(formData);
     if (isError) {
       console.log(error);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
+
+  const onSubmit: SubmitHandler<TFormInputs> = (formData) => {
+    login(formData);
   };
 
   return (

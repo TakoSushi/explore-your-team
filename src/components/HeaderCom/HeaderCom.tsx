@@ -11,7 +11,7 @@ export function HeaderCom() {
   const { data } = memberApi.endpoints.getMemberById.useQueryState(userId);
 
   const hadleClick = () => {
-    localStorage.removeItem('token');
+    localStorage.clear();
     navigate(`/${routePaths.auth.signIn}`);
   };
 

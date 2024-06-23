@@ -61,7 +61,8 @@ const signUpSchema = z
 type TFormInputs = z.infer<typeof signUpSchema>;
 
 export function Registration() {
-  const [registeration, { isSuccess, isError, error }] = useRegisterMutation();
+  const [registeration, { isLoading, isSuccess, isError, error }] =
+    useRegisterMutation();
   const navigate = useNavigate();
 
   const {
@@ -77,16 +78,17 @@ export function Registration() {
     if (isSuccess) {
       navigate(`/${routePaths.auth.signIn}`);
     }
-  }, [isSuccess, navigate]);
+    if (isError) {
+      console.log(error);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
 
-  const onSubmit: SubmitHandler<TFormInputs> = (data) => {
+  const onSubmit: SubmitHandler<TFormInputs> = async (data) => {
     registeration({
       email: data.email,
       password: data.password,
     });
-    if (isError) {
-      console.log(error);
-    }
   };
 
   return (

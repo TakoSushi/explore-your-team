@@ -6,7 +6,6 @@ import { MainLayout } from '../../components/MainLayout/MainLayout';
 import { MemberInfoPage } from '../../pages/MemberInfoPage/MemberInfoPage';
 import { TeamPage } from '../../pages/TeamPage/TeamPage';
 import { routePaths } from '../../utils/constants/routePaths';
-// import { useGetUserByIdQuery } from '../../utils/api/UserApi';
 
 function isLocalStorageHveToken(key: string): boolean {
   return !!localStorage.getItem(key);
@@ -19,23 +18,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     loader: async () => {
       if (!isLocalStorageHveToken('token')) {
-        console.log('no token');
         return redirect(routePaths.main + routePaths.auth.signIn);
       }
       return true;
     },
-    // action: rootAction,
     children: [
       {
         index: true,
         element: <TeamPage />,
       },
       {
-        // path: 'routePaths.users.usersInfo',
-        // loader: () => {
-        //   const userInfo = useGetUserByIdQuery(1);
-        //   return userInfo;
-        // },
         path: routePaths.users.userInfo,
         element: <MemberInfoPage />,
       },

@@ -21,7 +21,7 @@ export function MemberCard({ firstName, lastName, avatar, id }: TMemberCard) {
         {firstName} {lastName}
       </p>
       <div className={styles.likeBtnPosition}>
-        <LikeBtn isLiked={false} />
+        <LikeBtn id={id} />
       </div>
     </Link>
   );

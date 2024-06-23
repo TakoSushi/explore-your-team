@@ -1,0 +1,83 @@
+.sectionTeamPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+  padding: 48px 80px 69px;
+}
+
+.memberList {
+  width: 100%;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  gap: 20px;
+}
+
+.memberList>li {
+  width: fit-content;
+}
+
+.yetBtn {
+  width: 170px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid var(--primary-black);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-white);
+}
+
+.yetBtn::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url('../../../images/arrowDown.svg');
+  margin-inline-start: 8px;
+
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .25s;
+}
+
+@media (hover: hover) {
+  .yetBtn:hover {
+    opacity: .8;
+  }
+}
+
+.yetBtn:active {
+  opacity: .5;
+}
+
+@media screen and (max-width: 1325px) {
+  .memberList {
+    width: 955px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .memberList {
+    width: 630px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .memberList {
+    width: 305px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .sectionTeamPage {
+    gap: 32px;
+  }
+}

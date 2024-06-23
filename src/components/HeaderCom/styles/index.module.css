@@ -1,0 +1,195 @@
+.header {
+  position: relative;
+  width: 100%;
+  background-color: var(--primary-violet);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 39px 16px;
+}
+
+.headerTitleBlock {
+  max-width: 845px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 25px 0;
+}
+
+.headerTitle {
+  color: var(--primary-white);
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 75px;
+  text-align: center;
+  margin: 0;
+}
+
+.headerSubtitle {
+  color: var(--primary-white);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 23px;
+  text-align: center;
+}
+
+
+.memberHeaderInfo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-inline-start: 172px;
+}
+
+.memberImg {
+  font-size: 0;
+  min-width: 187px;
+  width: 187px;
+  height: 187px;
+  border-radius: 50%;
+  background-color: var(--secondary-gray-light);
+}
+
+.memberHeaderInfo > div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.memberName {
+  color: var(--primary-white);
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 75px;
+}
+
+.memberStatus {
+  color: var(--primary-white);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+}
+
+.headerBtn {
+  width: 81px;
+  height: 38px;
+  box-sizing: border-box;
+  border: 1px solid var( --secondary-gray-light);
+  border-radius: 8px;
+  color: var( --secondary-gray-light);
+  font-family: var(--global-text-font);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 136.19%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  
+  background-color: transparent;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .25s;
+}
+
+.exitBtn {
+  top: 32px;
+  right: 80px;
+}
+
+.backBtn {
+  top: 32px;
+  left: 80px;
+}
+
+@media (hover: hover) {
+  .headerBtn:hover {
+    opacity: .8;
+  }
+}
+
+.headerBtn:active {
+  opacity: .5;
+}
+
+@media screen and (max-width: 1024px) {
+  .headerTitleBlock {
+    max-width: 550px;
+  }
+
+  .headerTitle {
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  .headerSubtitle {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .memberName {
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+  }
+  
+  .memberStatus {
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 64px 16px;
+  }
+
+  .headerTitleBlock {
+    padding: 0;
+  }
+
+  .memberHeaderInfo {
+    flex-direction: column-reverse;
+    gap: 16px;
+    margin: 0;
+  }
+
+  .headerBtn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    font-size: 0;
+    line-height: 0;
+  }
+  
+  .exitBtn {
+    top: 12px;
+    right: 16px;
+  }
+
+  .backBtn {
+    top: 12px;
+    left: 16px;
+  }
+
+  .exitBtn::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: url('../../../images/exitBtn.svg') no-repeat center / cover;
+  }
+
+  .backBtn::before {
+    content: '';
+    position: absolute;
+    width: 7px;
+    height: 14px;
+    background: url('../../../images/backBtn.svg') no-repeat center / cover;
+  }
+}

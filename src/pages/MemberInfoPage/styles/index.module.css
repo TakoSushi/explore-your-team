@@ -1,0 +1,52 @@
+.sectionMemberinfo{
+  display: flex;
+  gap: 129px;
+  max-width: 800px;
+  margin-inline: 188px;
+  margin-block-start: 48px;
+}
+
+.contacts{
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.phoneNumber, .email{
+  width: max-content;
+  display: flex;
+  align-items: center;
+}
+
+.phoneNumber::before, .email::before{
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-inline-end: 8px;
+}
+.phoneNumber::before{
+  background-image: url('../../../images/phone.svg');
+}
+.email::before{
+  background-image: url('../../../images/email.svg');
+}
+
+@media screen and (max-width: 1024px) {
+  .sectionMemberinfo{
+    gap: 60px;
+    margin-inline: 96px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sectionMemberinfo{
+    flex-direction: column-reverse;
+    gap: 32px;
+    margin: 32px 16px 0;
+  }
+}

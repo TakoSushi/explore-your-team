@@ -1,0 +1,34 @@
+.viewBtn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .25s;
+  background-color: inherit;
+}
+
+@media (hover: hover) {
+  .viewBtn:hover {
+    opacity: .8;
+  }
+}
+
+.viewBtn > svg > path {
+  stroke: var(--secondary-gray);
+}
+
+button[data-isactiveattr="true"] >svg > path {
+  stroke: var(--seconary-green);
+}
+
+.viewBtn:active {
+  opacity: .5;
+}
+
+@media (hover: hover) {
+}

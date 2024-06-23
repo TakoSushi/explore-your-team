@@ -1,0 +1,51 @@
+.errorPage {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 48px 80px 69px;
+}
+
+
+.errorStatus {
+  font-size: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.errorStatus:after {
+  content: '';
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  background-image: url('../../../images/ghoustIcon.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-inline-end: 8px;
+}
+
+.errorMessage {
+  font-family: var(--global-text-font, Roboto);
+  font-size: 12px;
+}
+
+.linkWrapper {
+  font-size: 12px;
+  color: var(--primary-violet);
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .25s;
+}
+
+@media (hover: hover) {
+  .linkWrapper:hover {
+    opacity: .8;
+  }
+}
+
+.linkWrapper:active {
+  opacity: .5;
+}

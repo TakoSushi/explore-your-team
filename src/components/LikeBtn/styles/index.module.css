@@ -1,0 +1,23 @@
+.likeBtn {
+  width: 30px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .25s;
+}
+
+@media (hover: hover) {
+  .likeBtn:hover {
+    opacity: .8;
+  }
+}
+
+.likeBtn:active {
+  opacity: .5;
+}

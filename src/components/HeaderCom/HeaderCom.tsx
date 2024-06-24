@@ -34,7 +34,7 @@ export function HeaderCom() {
               <p
                 className={styles.memberName}
               >{`${data?.first_name} ${data?.last_name}`}</p>
-              <p className={styles.memberStatus}>{data?.id}</p>
+              <p className={styles.memberStatus}>Партнер</p>
             </div>
           </div>
           <Link className={`${styles.backBtn} ${styles.headerBtn}`} to="/">

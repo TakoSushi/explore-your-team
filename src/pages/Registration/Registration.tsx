@@ -3,6 +3,8 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { z } from 'zod';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthLayout } from '../../components/AuthLayout/AuthLayout';
 import { FormInputGroup } from '../../components/FormInputGroup/FormInputGroup';
 import { useRegisterMutation } from '../../utils/api/AuthApi';
@@ -80,6 +82,16 @@ export function Registration() {
     }
     if (isError) {
       console.log(error);
+      if (error) {
+        if ('status' in error) {
+          const errMsg =
+            'error' in error ? error.error : JSON.stringify(error.data);
+          toast.error(errMsg, {
+            position: 'bottom-center',
+            autoClose: 2000,
+          });
+        }
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
@@ -141,6 +153,7 @@ export function Registration() {
           Зарегистрироваться
         </button>
       </form>
+      <ToastContainer />
     </AuthLayout>
   );
 }

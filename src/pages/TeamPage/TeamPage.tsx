@@ -33,7 +33,7 @@ export function TeamPage() {
   return (
     <section className={styles.sectionTeamPage}>
       <ul className={styles.memberList}>
-        {data?.map((user) => (
+        {data?.teamList.map((user) => (
           <li key={nanoid()}>
             <MemberCard
               id={user.id}
@@ -44,11 +44,13 @@ export function TeamPage() {
           </li>
         ))}
       </ul>
-      {data && data.length > 0 && (
-        <button type="button" className={styles.yetBtn} onClick={handleClick}>
-          Показать еще
-        </button>
-      )}
+      {data &&
+        data?.teamList.length > 0 &&
+        data?.total_pages > queryPageNubmer && (
+          <button type="button" className={styles.yetBtn} onClick={handleClick}>
+            Показать еще
+          </button>
+        )}
     </section>
   );
 }

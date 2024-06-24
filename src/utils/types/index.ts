@@ -27,6 +27,12 @@ export type TTeamListResponse = {
   support: TSupportFields;
 };
 
+export type TTeamListResponseOmit = {
+  page: number;
+  total_pages: number;
+  teamList: TMemberState[];
+};
+
 export type TRegisterRequest = {
   email: string;
   password: string;

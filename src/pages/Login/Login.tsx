@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { ToastContainer, toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { AuthLayout } from '../../components/AuthLayout/AuthLayout';
 import { FormInputGroup } from '../../components/FormInputGroup/FormInputGroup';
@@ -58,8 +59,19 @@ export function Login() {
         navigate('/');
       }
     }
+
     if (isError) {
       console.log(error);
+      if (error) {
+        if ('status' in error) {
+          const errMsg =
+            'error' in error ? error.error : JSON.stringify(error.data);
+          toast.error(errMsg, {
+            position: 'bottom-center',
+            autoClose: 2000,
+          });
+        }
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
@@ -100,6 +112,7 @@ export function Login() {
           Войти
         </button>
       </form>
+      <ToastContainer />
     </AuthLayout>
   );
 }
